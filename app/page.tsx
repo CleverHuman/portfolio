@@ -2,6 +2,8 @@
 
 import { Sparkles, ArrowUpRight, Mail, Send, MessageCircle, Dribbble, Linkedin, Twitter, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Fireworks } from '@/components/ui/fireworks';
+import { Vortex } from '@/components/ui/vortex';
 import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
 
@@ -505,7 +507,11 @@ export default function Home() {
   }, [isModalOpen]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0a0b1a] via-[#141529] to-[#1a1b3a]">
+    <div className="min-h-screen bg-gradient-to-br from-[#0a0b1a] via-[#141529] to-[#1a1b3a] relative">
+      {/* Vortex Background - Full Site */}
+      <Vortex className="w-full h-full" particleCount={150} baseHue={120} />
+      
+      <div className="relative z-10">
       <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-black/30 border-b border-white/5">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
@@ -545,8 +551,44 @@ export default function Home() {
         </div>
       </header>
 
-      <section id="hero" className="min-h-screen flex items-center justify-center px-6 lg:px-8 pt-20">
-        <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center">
+      <section id="hero" className="relative min-h-screen flex items-center justify-center px-6 lg:px-8 pt-20 overflow-hidden">
+        {/* Fireworks Background - Full Hero Section */}
+        {/* <div className="absolute inset-0 w-full h-full">
+          <Fireworks className="w-full h-full" particleCount={90} interval={1600} />
+        </div> */}
+        
+        {/* Decorative Landing Shapes - Dynamic */}
+        <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden">
+          {/* Large floating orbs with blur - Dynamic movement */}
+          <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-cyan-500/30 to-blue-500/30 rounded-full blur-3xl animate-float-large" />
+          <div className="absolute top-40 right-20 w-96 h-96 bg-gradient-to-br from-purple-500/30 to-pink-500/30 rounded-full blur-3xl animate-float-large-reverse" style={{ animationDelay: '1s' }} />
+          <div className="absolute bottom-32 left-1/4 w-64 h-64 bg-gradient-to-br from-blue-500/30 to-cyan-500/30 rounded-full blur-3xl animate-float-large" style={{ animationDelay: '2s' }} />
+          <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-gradient-to-br from-amber-500/25 to-orange-500/25 rounded-full blur-3xl animate-float-large-reverse" style={{ animationDelay: '0.5s' }} />
+          
+          {/* Center large orb - Pulsing and glowing */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-br from-cyan-500/15 via-blue-500/15 to-purple-500/15 rounded-full blur-3xl animate-pulse-glow" />
+          
+          {/* Geometric shapes - Rotating and floating */}
+          <div className="absolute top-1/2 left-1/4 w-32 h-32 border-2 border-cyan-400/40 rounded-lg animate-rotate-and-float shadow-lg shadow-cyan-400/30" />
+          <div className="absolute top-1/3 right-1/3 w-24 h-24 border-2 border-purple-400/40 rounded-full animate-float-large shadow-lg shadow-purple-400/30" style={{ animationDelay: '2.5s' }} />
+          <div className="absolute bottom-1/3 left-1/3 w-20 h-20 bg-gradient-to-br from-cyan-400/30 to-blue-400/30 rounded-lg animate-float-large-reverse shadow-lg shadow-cyan-400/30" style={{ animationDelay: '3s' }} />
+          
+          {/* Additional decorative elements - Dynamic */}
+          <div className="absolute top-1/4 left-1/2 w-16 h-16 border-2 border-cyan-400/35 rounded-full animate-float-large shadow-md shadow-cyan-400/25" style={{ animationDelay: '1.5s' }} />
+          <div className="absolute bottom-1/4 right-1/2 w-12 h-12 bg-gradient-to-br from-purple-400/30 to-pink-400/30 rounded-lg animate-rotate-and-float shadow-md shadow-purple-400/25" style={{ animationDelay: '2s', animationDuration: '12s' }} />
+          
+          {/* More dynamic shapes */}
+          <div className="absolute top-1/5 right-1/5 w-28 h-28 border border-cyan-400/25 rounded-lg rotate-45 animate-float-large" style={{ animationDelay: '0.8s' }} />
+          <div className="absolute bottom-1/5 left-1/5 w-18 h-18 bg-gradient-to-br from-blue-400/25 to-purple-400/25 rounded-full animate-float-large-reverse" style={{ animationDelay: '1.2s' }} />
+          
+          {/* Grid pattern overlay - Subtle */}
+          <div className="absolute inset-0 opacity-5" style={{
+            backgroundImage: `linear-gradient(cyan 1px, transparent 1px), linear-gradient(90deg, cyan 1px, transparent 1px)`,
+            backgroundSize: '50px 50px'
+          }} />
+        </div>
+        
+        <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center relative z-10">
           <div className="space-y-8">
             <div className="flex items-center gap-2 text-sm text-gray-400">
               <div className="w-2 h-2 rounded-full bg-cyan-400" />
@@ -1087,6 +1129,7 @@ export default function Home() {
           </div>
         </div>
       )}
+      </div>
     </div>
   );
 }

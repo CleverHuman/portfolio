@@ -97,10 +97,115 @@ html {
   }
 }
 
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  33% {
+    transform: translateY(-20px) translateX(10px);
+  }
+  66% {
+    transform: translateY(10px) translateX(-10px);
+  }
+}
+
+@keyframes floatReverse {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  33% {
+    transform: translateY(15px) translateX(-15px);
+  }
+  66% {
+    transform: translateY(-10px) translateX(15px);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes floatLarge {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) scale(1);
+  }
+  25% {
+    transform: translateY(-30px) translateX(20px) scale(1.1);
+  }
+  50% {
+    transform: translateY(20px) translateX(-20px) scale(0.9);
+  }
+  75% {
+    transform: translateY(-15px) translateX(15px) scale(1.05);
+  }
+}
+
+@keyframes floatLargeReverse {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) scale(1);
+  }
+  25% {
+    transform: translateY(30px) translateX(-20px) scale(0.9);
+  }
+  50% {
+    transform: translateY(-20px) translateX(20px) scale(1.1);
+  }
+  75% {
+    transform: translateY(15px) translateX(-15px) scale(0.95);
+  }
+}
+
+@keyframes rotateAndFloat {
+  0% {
+    transform: rotate(0deg) translateY(0px) scale(1);
+  }
+  33% {
+    transform: rotate(120deg) translateY(-25px) scale(1.15);
+  }
+  66% {
+    transform: rotate(240deg) translateY(25px) scale(0.85);
+  }
+  100% {
+    transform: rotate(360deg) translateY(0px) scale(1);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.2);
+  }
+}
+
 .animate-fade-in {
   animation: fadeIn 0.3s ease-out;
 }
 
 .animate-fade-in-scale {
   animation: fadeInScale 0.3s ease-out;
+}
+
+.animate-float-large {
+  animation: floatLarge 8s ease-in-out infinite;
+}
+
+.animate-float-large-reverse {
+  animation: floatLargeReverse 10s ease-in-out infinite;
+}
+
+.animate-rotate-and-float {
+  animation: rotateAndFloat 15s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
 }
