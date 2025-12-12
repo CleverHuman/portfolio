@@ -711,7 +711,7 @@ export default function Home() {
                   {isTyping && <span className="animate-pulse">|</span>}
                 </span>
                 <span className="inline-flex items-center ml-2">
-                  <ArrowUpRight className="w-10 h-10 text-cyan-400" />
+                  <ArrowUpRight className="w-9 h-9 text-cyan-400" />
                 </span>
               </h1>
               <p className="text-gray-400 text-lg leading-relaxed max-w-xl">
