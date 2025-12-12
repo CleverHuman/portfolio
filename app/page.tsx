@@ -4,6 +4,7 @@ import { Sparkles, ArrowUpRight, Mail, Send, MessageCircle, Dribbble, Linkedin, 
 import { Button } from '@/components/ui/button';
 import { Fireworks } from '@/components/ui/fireworks';
 import { Vortex } from '@/components/ui/vortex';
+import { ColourfulText } from '@/components/ui/colourful-text';
 import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
 
@@ -701,7 +702,7 @@ export default function Home() {
           <div className="space-y-8">
             <div className="flex items-center gap-2 text-sm text-gray-400">
               <div className="w-2 h-2 rounded-full bg-cyan-400" />
-              <span>Seasoned AI Full-Stack Developer</span>
+              <ColourfulText>Seasoned AI Full-Stack Developer</ColourfulText>
             </div>
 
             <div className="space-y-4">
