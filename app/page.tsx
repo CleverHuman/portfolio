@@ -708,10 +708,10 @@ export default function Home() {
               <h1 className="text-5xl lg:text-7xl font-bold text-white leading-tight">
                 <span>
                   {displayedName}
-                  {isTyping && <span className="animate-pulse">|</span>}
+                  {isTyping && <span className="animate-pulse"></span>}
                 </span>
-                <span className="inline-flex items-center ml-2">
-                  <ArrowUpRight className="w-9 h-9 text-cyan-400" />
+                <span className="inline-flex items-center ml-4">
+                  <ArrowUpRight className="w-12 h-12 text-cyan-400" />
                 </span>
               </h1>
               <p className="text-gray-400 text-lg leading-relaxed max-w-xl">
