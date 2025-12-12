@@ -11,6 +11,62 @@ export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentServiceSlide, setCurrentServiceSlide] = useState(0);
+  const [displayedName, setDisplayedName] = useState('');
+  const [isTyping, setIsTyping] = useState(true);
+
+  // Typing animation for name - continuous loop
+  useEffect(() => {
+    const name = 'Jonathan Lopez';
+    let currentIndex = 0;
+    let isDeleting = false;
+    let pauseCount = 0;
+    const pauseAfterTyping = 20; // Pause for 2 seconds (20 * 100ms)
+    const pauseAfterDeleting = 5; // Pause for 0.5 seconds (5 * 100ms)
+    
+    const animate = () => {
+      if (!isDeleting && currentIndex < name.length) {
+        // Typing forward
+        setDisplayedName(name.substring(0, currentIndex + 1));
+        currentIndex++;
+        setIsTyping(true);
+        pauseCount = 0;
+        setTimeout(animate, 100); // Typing speed: 100ms
+      } else if (!isDeleting && currentIndex === name.length) {
+        // Finished typing, pause before deleting
+        pauseCount++;
+        if (pauseCount >= pauseAfterTyping) {
+          isDeleting = true;
+          pauseCount = 0;
+          setTimeout(animate, 50); // Start deleting
+        } else {
+          setTimeout(animate, 100);
+        }
+      } else if (isDeleting && currentIndex > 0) {
+        // Deleting backward
+        currentIndex--;
+        setDisplayedName(name.substring(0, currentIndex));
+        setIsTyping(true);
+        pauseCount = 0;
+        setTimeout(animate, 50); // Deleting speed: 50ms (faster)
+      } else if (isDeleting && currentIndex === 0) {
+        // Finished deleting, pause before typing again
+        pauseCount++;
+        if (pauseCount >= pauseAfterDeleting) {
+          isDeleting = false;
+          pauseCount = 0;
+          setTimeout(animate, 100); // Start typing again
+        } else {
+          setTimeout(animate, 100);
+        }
+      }
+    };
+
+    animate();
+
+    // Cleanup is handled by the recursive setTimeout pattern
+    return () => {};
+  }, []);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -461,6 +517,38 @@ export default function Home() {
 
   const totalSlides = serviceCards.length + 1; // +1 for bot image
   const autoSlideIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const serviceSlideIntervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Service data from the service file
+  const services = [
+    {
+      heading: "Web & Mobile Development",
+      title: "Elevating Digital Experiences with High-Performance, Future-Ready Solutions",
+      description: "I build fast, scalable, and visually engaging web and mobile applications designed to deliver a seamless user journey and long-term reliability. With years of full-stack expertise, I combine modern technologies, optimized architectures, and industry best practices to ensure your digital product not only performs exceptionally today but evolves effortlessly with your business tomorrow.\n\nWhether you need an MVP, a complex SaaS platform, or a cross-platform mobile app, I focus on clean architecture, intuitive UI/UX, and maintainable code that sets the foundation for sustainable growth."
+    },
+    {
+      heading: "CRM Automation & Integration",
+      title: "Transforming Operations Through Intelligent Workflows",
+      description: "I help businesses eliminate inefficiencies and unlock operational clarity by implementing smart CRM automations that work for you—day and night. From HubSpot and GoHighLevel to custom CRM solutions, I design automated workflows, pipelines, integrations, and data systems that streamline your sales, marketing, and support processes.\n\nMy goal is simple: reduce manual work, increase conversion rates, and give you real-time visibility across your business, empowering your team to focus on what matters most - your clients."
+    },
+    {
+      heading: "Blockchain & Web3 Solutions",
+      title: "Secure, Scalable, and Innovation-Driven Blockchain Development",
+      description: "I work with enterprises and startups looking to build trustless, secure, and scalable blockchain solutions from smart contracts and decentralized applications (dApps) to token ecosystems and private blockchain networks.\n\nMy approach focuses on security, transparency, and long-term feasibility, ensuring that your Web3 product aligns perfectly with your business goals while meeting the highest standards of reliability and compliance.\n\nWhether you're exploring blockchain for the first time or expanding an existing ecosystem, I provide clear guidance and full-cycle development."
+    },
+    {
+      heading: "AI & Machine Learning Engineering",
+      title: "Future-Proof Your Business with Practical, Impact-Driven AI Solutions",
+      description: "I help organizations harness the power of artificial intelligence to automate processes, enhance decision-making, and unlock new business opportunities. From predictive models and NLP agents to custom AI-powered workflows, I deliver solutions that are not only cutting-edge but practical, efficient, and aligned with your real business needs.\n\nMy focus is on delivering AI systems that integrate seamlessly into your operations while bringing measurable ROI helping you stay ahead in a rapidly evolving digital landscape."
+    },
+    {
+      heading: "DevOps, Cloud Architecture & Automation",
+      title: "Faster Releases, Higher Reliability, and Stronger Infrastructure",
+      description: "I implement modern DevOps practices that help teams ship faster, reduce downtime, and maintain highly scalable systems. With expertise in AWS, CI/CD pipelines, containerization, and automated deployments, I ensure your product runs on a secure, optimized, and cost-efficient cloud environment.\n\nFrom infrastructure design to monitoring, scaling, and automation, I bring the tools and processes that support consistent performance and effortless growth."
+    }
+  ];
+
+  const totalServiceSlides = services.length;
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % totalSlides);
@@ -482,6 +570,27 @@ export default function Home() {
       }
     };
   }, [totalSlides]);
+
+  // Auto-sliding functionality for service banner
+  useEffect(() => {
+    serviceSlideIntervalRef.current = setInterval(() => {
+      setCurrentServiceSlide((prev) => (prev + 1) % totalServiceSlides);
+    }, 6000); // Change slide every 6 seconds
+
+    return () => {
+      if (serviceSlideIntervalRef.current) {
+        clearInterval(serviceSlideIntervalRef.current);
+      }
+    };
+  }, [totalServiceSlides]);
+
+  const nextServiceSlide = () => {
+    setCurrentServiceSlide((prev) => (prev + 1) % totalServiceSlides);
+  };
+
+  const prevServiceSlide = () => {
+    setCurrentServiceSlide((prev) => (prev - 1 + totalServiceSlides) % totalServiceSlides);
+  };
 
   const openProjectModal = (index: number) => {
     setSelectedProject(index);
@@ -597,9 +706,12 @@ export default function Home() {
 
             <div className="space-y-4">
               <h1 className="text-5xl lg:text-7xl font-bold text-white leading-tight">
-                Jonathan Lopez
-                <span className="inline-flex items-center ml-4">
-                  <ArrowUpRight className="w-12 h-12 text-cyan-400" />
+                <span>
+                  {displayedName}
+                  {isTyping && <span className="animate-pulse">|</span>}
+                </span>
+                <span className="inline-flex items-center ml-2">
+                  <ArrowUpRight className="w-10 h-10 text-cyan-400" />
                 </span>
               </h1>
               <p className="text-gray-400 text-lg leading-relaxed max-w-xl">
@@ -817,11 +929,130 @@ export default function Home() {
       </section>
 
       <section id="about" className="min-h-screen flex items-center justify-center px-6 lg:px-8 py-20">
-        <div className="max-w-7xl mx-auto w-full text-center">
-          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-8">About Me</h2>
-          <p className="text-gray-400 mb-12 max-w-2xl mx-auto">
-            With over 11 years of experience in full-stack development, I've helped businesses transform their ideas into scalable, production-ready applications. From SaaS platforms to AI-powered workflows, I deliver solutions that drive real business value.
-          </p>
+        <div className="max-w-7xl mx-auto w-full">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-8">About Me</h2>
+            <p className="text-gray-400 mb-12 max-w-2xl mx-auto">
+              With over 11 years of experience in full-stack development, I've helped businesses transform their ideas into scalable, production-ready applications. From SaaS platforms to AI-powered workflows, I deliver solutions that drive real business value.
+            </p>
+          </div>
+
+          {/* Service Slide Banner */}
+          <div className="relative bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-white/10 rounded-3xl p-8 lg:p-12 overflow-hidden">
+            <div className="relative">
+              {/* Carousel wrapper */}
+              <div className="relative overflow-hidden">
+                <div
+                  className="flex transition-transform duration-700 ease-in-out"
+                  style={{ transform: `translateX(-${currentServiceSlide * 100}%)` }}
+                >
+                  {services.map((service, index) => (
+                    <div key={index} className="min-w-full flex-shrink-0">
+                      <div className="max-w-4xl mx-auto">
+                        {/* Content Section */}
+                        <div className="space-y-6 rounded-2xl p-8 lg:p-12">
+                          {/* Heading with decorative lines */}
+                          <div className="flex items-center gap-4 mb-6">
+                            <div className="h-0.5 w-8 bg-cyan-400"></div>
+                            <h3 className="text-xl lg:text-2xl font-semibold text-cyan-400">
+                              {service.heading}
+                            </h3>
+                            <div className="h-0.5 flex-1 bg-cyan-400"></div>
+                          </div>
+
+                          {/* Main Title */}
+                          <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-white leading-tight mb-6">
+                            {service.title}
+                          </h2>
+
+                          {/* Description */}
+                          <p className="text-gray-300 leading-relaxed whitespace-pre-line text-base lg:text-lg">
+                            {service.description}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Slider indicators */}
+              <div className="flex justify-center mt-8 space-x-2">
+                {services.map((_, index) => (
+                  <button
+                    key={index}
+                    type="button"
+                    onClick={() => setCurrentServiceSlide(index)}
+                    className={`h-2 rounded-full transition-all duration-300 ${
+                      currentServiceSlide === index ? 'bg-cyan-500 w-8' : 'bg-gray-500/50 w-2'
+                    }`}
+                    aria-label={`Service slide ${index + 1}`}
+                  />
+                ))}
+              </div>
+
+              {/* Slider controls */}
+              <button
+                type="button"
+                onClick={prevServiceSlide}
+                className="absolute top-1/2 left-0 -translate-y-1/2 z-30 flex items-center justify-center px-4 cursor-pointer group focus:outline-none"
+              >
+                <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-cyan-500/20 to-blue-500/20 backdrop-blur-sm border border-cyan-500/30 group-hover:border-cyan-500/50 transition-all">
+                  <ChevronLeft className="w-5 h-5 text-cyan-400" />
+                  <span className="sr-only">Previous</span>
+                </span>
+              </button>
+              <button
+                type="button"
+                onClick={nextServiceSlide}
+                className="absolute top-1/2 right-0 -translate-y-1/2 z-30 flex items-center justify-center px-4 cursor-pointer group focus:outline-none"
+              >
+                <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-cyan-500/20 to-blue-500/20 backdrop-blur-sm border border-cyan-500/30 group-hover:border-cyan-500/50 transition-all">
+                  <ChevronRight className="w-5 h-5 text-cyan-400" />
+                  <span className="sr-only">Next</span>
+                </span>
+              </button>
+            </div>
+
+            {/* Why Clients Choose Me Section */}
+            <div className="mt-16 pt-12 border-t border-white/10">
+              <h3 className="text-2xl lg:text-3xl font-bold text-white mb-8 text-center">
+                Why Clients Choose Me
+              </h3>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {[
+                  "End-to-end development from concept to deployment",
+                  "Clear communication and complete technical transparency",
+                  "Business-first approach that I build with ROI and scalability in mind",
+                  "Long-term partnership mindset, not just project delivery",
+                  "Flexible engagement models to fit your needs"
+                ].map((point, index) => (
+                  <div
+                    key={index}
+                    className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:border-cyan-400/30 transition-all"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-500/20 to-blue-500/20 border border-cyan-500/30 flex items-center justify-center flex-shrink-0">
+                        <div className="w-2 h-2 rounded-full bg-cyan-400" />
+                      </div>
+                      <p className="text-gray-300 leading-relaxed">{point}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-12 text-center">
+                <p className="text-gray-400 text-lg mb-6">
+                  If you're looking for someone who can not only build powerful technology but also understand your business vision and scale with you.
+                </p>
+                <Button
+                  onClick={() => scrollToSection('contact')}
+                  className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white border-0"
+                >
+                  I'd love to collaborate
+                </Button>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
