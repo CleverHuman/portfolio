@@ -12,6 +12,7 @@ export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentServiceSlide, setCurrentServiceSlide] = useState(0);
   const [displayedName, setDisplayedName] = useState('');
   const [isTyping, setIsTyping] = useState(true);
@@ -617,13 +618,13 @@ export default function Home() {
   }, [isModalOpen]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0a0b1a] via-[#141529] to-[#1a1b3a] relative">
+  <div className="min-h-screen bg-gradient-to-br from-[#0a0b1a] via-[#141529] to-[#1a1b3a] relative overflow-x-hidden">
       {/* Vortex Background - Full Site */}
       <Vortex className="w-full h-full" particleCount={150} baseHue={120} />
       
       <div className="relative z-10">
       <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-black/30 border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             <button onClick={() => scrollToSection('hero')} className="flex items-center gap-3 group">
               <div className="relative w-10 h-10 rounded-xl overflow-hidden transform group-hover:scale-105 transition-transform">
@@ -635,6 +636,7 @@ export default function Home() {
               <span className="text-white font-semibold text-lg">Creative</span>
             </button>
 
+            {/* Desktop Nav */}
             <nav className="hidden md:flex items-center gap-8">
               <button onClick={() => scrollToSection('services')} className="text-gray-300 hover:text-white transition-colors text-sm">
                 Services
@@ -650,18 +652,46 @@ export default function Home() {
               </button>
             </nav>
 
+            {/* Mobile Hamburger */}
+            <div className="md:hidden flex items-center">
+              <button
+                onClick={() => setIsMobileMenuOpen(true)}
+                className="text-white focus:outline-none"
+                aria-label="Open menu"
+              >
+                <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </button>
+            </div>
+
             <Button
               onClick={() => scrollToSection('contact')}
-              className="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white border-0 gap-2"
+              className="hidden sm:flex bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white border-0 gap-2"
             >
               <Sparkles className="w-4 h-4" />
               Contact Me
             </Button>
           </div>
         </div>
+
+        {/* Mobile Menu Modal */}
+        {isMobileMenuOpen && (
+          <div className="fixed inset-0 z-[999] bg-black/80 flex flex-col items-center justify-center md:hidden animate-fade-in" onClick={() => setIsMobileMenuOpen(false)}>
+            <button className="absolute top-6 right-6 text-white" onClick={() => setIsMobileMenuOpen(false)} aria-label="Close menu">
+              <X className="w-8 h-8" />
+            </button>
+            <nav className="flex flex-col gap-8 text-center">
+              <button onClick={() => { scrollToSection('services'); setIsMobileMenuOpen(false); }} className="text-white text-2xl font-semibold">Services</button>
+              <button onClick={() => { scrollToSection('projects'); setIsMobileMenuOpen(false); }} className="text-white text-2xl font-semibold">Projects</button>
+              <button onClick={() => { scrollToSection('about'); setIsMobileMenuOpen(false); }} className="text-white text-2xl font-semibold">About</button>
+              <button onClick={() => { scrollToSection('contact'); setIsMobileMenuOpen(false); }} className="text-white text-2xl font-semibold">Contact</button>
+            </nav>
+          </div>
+        )}
       </header>
 
-      <section id="hero" className="relative min-h-screen flex items-center justify-center px-6 lg:px-8 pt-20 overflow-hidden">
+  <section id="hero" className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 overflow-hidden">
         {/* Fireworks Background - Full Hero Section */}
         {/* <div className="absolute inset-0 w-full h-full">
           <Fireworks className="w-full h-full" particleCount={90} interval={1600} />
@@ -698,7 +728,7 @@ export default function Home() {
           }} />
         </div>
         
-        <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center relative z-10">
+  <div className="max-w-7xl mx-auto w-full grid gap-8 lg:grid-cols-2 lg:gap-12 items-center relative z-10">
           <div className="space-y-8">
             <div className="flex items-center gap-2 text-sm text-gray-400">
               <div className="w-2 h-2 rounded-full bg-cyan-400" />
@@ -706,7 +736,7 @@ export default function Home() {
             </div>
 
             <div className="space-y-4">
-              <h1 className="text-5xl lg:text-7xl font-bold text-white leading-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white leading-tight">
                 <span>
                   {displayedName}
                   {isTyping && <span className="animate-pulse"></span>}
@@ -753,17 +783,17 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="services" className="min-h-screen flex items-center justify-center px-6 lg:px-8 py-20">
+  <section id="services" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20">
         <div className="max-w-7xl mx-auto w-full">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
               Jonathan Lopez, <span className="text-gray-400">Full-Stack Developer | SaaS & AI Specialist</span>
             </h2>
             <p className="text-gray-400">Over 11 years of experience delivering scalable, production-ready solutions</p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-8 items-center bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-white/10 rounded-3xl p-8 lg:p-12">
-            <div className="relative aspect-square lg:aspect-auto">
+          <div className="flex flex-col lg:flex-row gap-8 items-stretch bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-white/10 rounded-3xl p-4 sm:p-8 lg:p-12">
+            <div className="relative aspect-square w-full lg:w-1/2 lg:aspect-auto">
               <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-2xl blur-3xl animate-pulse" />
 
               {/* Carousel wrapper */}
@@ -853,7 +883,7 @@ export default function Home() {
               </button>
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-6 w-full lg:w-1/2">
               <p className="text-gray-300 leading-relaxed">
                 I help businesses build scalable, production-ready applications from SaaS platforms to AI-powered workflows and automations. With over 11 years of experience and 30+ successful projects, I deliver solutions that are both technically solid and business-driven.
               </p>
@@ -889,14 +919,14 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="projects" className="min-h-screen flex items-center justify-center px-6 lg:px-8 py-20">
+  <section id="projects" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20">
         <div className="max-w-7xl mx-auto w-full">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">Portfolio Projects</h2>
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">Portfolio Projects</h2>
             <p className="text-gray-400">Showcasing my best work across various domains</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {portfolioProjects.map((project, index) => (
               <div 
                 key={index} 
@@ -929,17 +959,17 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="about" className="min-h-screen flex items-center justify-center px-6 lg:px-8 py-20">
+  <section id="about" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20">
         <div className="max-w-7xl mx-auto w-full">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-8">About Me</h2>
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-8">About Me</h2>
             <p className="text-gray-400 mb-12 max-w-2xl mx-auto">
               With over 11 years of experience in full-stack development, I've helped businesses transform their ideas into scalable, production-ready applications. From SaaS platforms to AI-powered workflows, I deliver solutions that drive real business value.
             </p>
           </div>
 
           {/* Service Slide Banner */}
-          <div className="relative bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-white/10 rounded-3xl p-8 lg:p-12 overflow-hidden">
+          <div className="relative bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-white/10 rounded-3xl p-4 sm:p-8 lg:p-12 overflow-hidden">
             <div className="relative">
               {/* Carousel wrapper */}
               <div className="relative overflow-hidden">
