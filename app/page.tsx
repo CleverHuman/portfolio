@@ -741,9 +741,9 @@ export default function Home() {
                   {displayedName}
                   {isTyping && <span className="animate-pulse"></span>}
                 </span>
-                <span className="inline-flex items-center ml-4">
+                {/* <span className="inline-flex items-center ml-4">
                   <ArrowUpRight className="w-12 h-12 text-cyan-400" />
-                </span>
+                </span> */}
               </h1>
               <p className="text-gray-400 text-lg leading-relaxed max-w-xl">
                 I help businesses build scalable, production-ready applications from SaaS platforms to AI-powered workflows and automations. Let's bring your idea to life!
