@@ -620,9 +620,9 @@ export default function Home() {
   return (
   <div className="min-h-screen bg-gradient-to-br from-[#0a0b1a] via-[#141529] to-[#1a1b3a] relative overflow-x-hidden">
       {/* Vortex Background - Full Site */}
-      <Vortex className="w-full h-full" particleCount={150} baseHue={120} />
+    <Vortex className="w-full h-full" particleCount={150} baseHue={120} />
       
-      <div className="relative z-10">
+    <div className="relative z-10">
       <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-black/30 border-b border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
@@ -691,7 +691,7 @@ export default function Home() {
         )}
       </header>
 
-  <section id="hero" className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 overflow-hidden">
+      <section id="hero" className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 overflow-hidden">
         {/* Fireworks Background - Full Hero Section */}
         {/* <div className="absolute inset-0 w-full h-full">
           <Fireworks className="w-full h-full" particleCount={90} interval={1600} />
@@ -728,7 +728,7 @@ export default function Home() {
           }} />
         </div>
         
-  <div className="max-w-7xl mx-auto w-full grid gap-8 lg:grid-cols-2 lg:gap-12 items-center relative z-10">
+        <div className="max-w-7xl mx-auto w-full grid gap-8 lg:grid-cols-2 lg:gap-12 items-center relative z-10">
           <div className="space-y-8">
             <div className="flex items-center gap-2 text-sm text-gray-400">
               <div className="w-2 h-2 rounded-full bg-cyan-400" />
@@ -783,7 +783,7 @@ export default function Home() {
         </div>
       </section>
 
-  <section id="services" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20">
+      <section id="services" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20">
         <div className="max-w-7xl mx-auto w-full">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
@@ -919,7 +919,7 @@ export default function Home() {
         </div>
       </section>
 
-  <section id="projects" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20">
+      <section id="projects" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20">
         <div className="max-w-7xl mx-auto w-full">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">Portfolio Projects</h2>
@@ -959,7 +959,7 @@ export default function Home() {
         </div>
       </section>
 
-  <section id="about" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20">
+      <section id="about" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20">
         <div className="max-w-7xl mx-auto w-full">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-8">About Me</h2>
