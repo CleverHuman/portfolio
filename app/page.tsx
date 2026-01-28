@@ -19,7 +19,7 @@ export default function Home() {
 
   // Typing animation for name - continuous loop
   useEffect(() => {
-    const name = 'Jonathan Lopez';
+    const name = '@Jon-AI Specialist';
     let currentIndex = 0;
     let isDeleting = false;
     let pauseCount = 0;
