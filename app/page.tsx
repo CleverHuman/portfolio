@@ -19,7 +19,7 @@ export default function Home() {
 
   // Typing animation for name - continuous loop
   useEffect(() => {
-    const name = '@Jon-AI Specialist';
+    const name = '@Clever-AI Specialist';
     let currentIndex = 0;
     let isDeleting = false;
     let pauseCount = 0;
@@ -787,7 +787,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto w-full">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
-              Jonathan Lopez, <span className="text-gray-400">Full-Stack Developer | SaaS & AI Specialist</span>
+              Clever Dev, <span className="text-gray-400">Full-Stack Developer | SaaS & AI Specialist</span>
             </h2>
             <p className="text-gray-400">Over 11 years of experience delivering scalable, production-ready solutions</p>
           </div>
@@ -1098,7 +1098,7 @@ export default function Home() {
                     <Image src="/asset/man.png" alt="Logo" width={40} height={40} className="w-full h-full object-cover" />
                   </div>
                 </div>
-                <span className="text-white font-semibold text-lg">Jonathan L.</span>
+                <span className="text-white font-semibold text-lg">Clever Dev.</span>
               </div>
               <p className="text-gray-400 text-sm leading-relaxed">
                 Building scalable, production-ready applications with clean code and business-focused solutions.
@@ -1152,10 +1152,10 @@ export default function Home() {
                 <li className="flex items-center gap-2 text-gray-400 text-sm">
                   <Mail className="w-4 h-4 text-cyan-400" />
                   <a 
-                    href="mailto:lopez.jonathan0401@gmail.com" 
+                    href="mailto:cleverhuman110@gmail.com" 
                     className="hover:text-cyan-400 transition-colors cursor-pointer"
                   >
-                    lopez.jonathan0401@gmail.com
+                    cleverhuman110@gmail.com
                   </a>
                 </li>
                 <li className="flex items-center gap-2 text-gray-400 text-sm">
@@ -1193,7 +1193,7 @@ export default function Home() {
                 </Button>
               </div>
               <div className="text-center md:text-right space-y-2">
-                <p className="text-gray-400 text-sm">© 2025 Jonathan L. All rights reserved.</p>
+                <p className="text-gray-400 text-sm">© 2025 Clever Dev. All rights reserved.</p>
                 <div className="flex gap-4 text-xs text-gray-500">
                   <a href="#" className="hover:text-gray-400 transition-colors">Privacy Policy</a>
                   <a href="#" className="hover:text-gray-400 transition-colors">Terms of Service</a>
