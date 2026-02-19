@@ -607,6 +607,111 @@ export default function Home() {
       projectType: "Mobile App, Sports Technology",
       duration: "11 months",
       allTechnologies: ['Basketball', 'Mobile App', 'Sports Analytics', 'AI', 'Shot Tracking', 'React Native', 'Real-time Stats', 'Social Features']
+    },
+    {
+      title: "Multi-Player Pose Estimation and Movement Analytics for Tennis",
+      description: "Real-time multi-player pose estimation and tracking system for tennis match analysis using computer vision.",
+      image: "/asset/portfolio/tennis.mp4",
+      alt: "Tennis Pose Estimation - Computer Vision Analytics",
+      link: null,
+      tags: ['Computer Vision', 'Pose Estimation', 'Sports Analytics'],
+      extraTagsCount: 6,
+      bgColor: "bg-green-800",
+      overview: "This project implements a real-time multi-player pose estimation and tracking system designed for tennis match analysis. The system detects players, extracts full-body skeletal keypoints, tracks identity across frames, and performs motion analytics to evaluate biomechanics, footwork, and positioning during gameplay. The provided video demonstrates three players inside an indoor court environment with overlaid skeletal keypoints representing detected body joints in real time.",
+      process: [
+        {
+          title: "Pose Estimation",
+          description: "Developed real-time multi-player pose estimation system using computer vision to extract full-body skeletal keypoints from video feeds."
+        },
+        {
+          title: "Player Tracking",
+          description: "Implemented identity tracking across frames to maintain consistent player identification throughout the match."
+        },
+        {
+          title: "Motion Analytics",
+          description: "Built motion analytics engine to evaluate biomechanics, footwork patterns, and player positioning during gameplay."
+        },
+        {
+          title: "Real-time Processing",
+          description: "Optimized the system for real-time processing with overlaid skeletal keypoints and performance metrics display."
+        }
+      ],
+      success: "The Tennis Pose Estimation system has successfully launched, providing coaches and players with detailed biomechanical analysis and performance insights for improved training and gameplay.",
+      client: "Tennis Analytics Pro",
+      location: "Global",
+      projectType: "Computer Vision, Sports Technology, AI",
+      duration: "10 months",
+      allTechnologies: ['Computer Vision', 'Pose Estimation', 'Sports Analytics', 'Real-time Processing', 'Motion Tracking', 'Biomechanics', 'AI', 'Machine Learning']
+    },
+    {
+      title: "Hockey Match Analysis using Segmentation and Recognition",
+      description: "Computer vision system for automated hockey match analysis using semantic segmentation and object detection.",
+      image: "/asset/portfolio/hockey.png",
+      alt: "Hockey Match Analysis - Computer Vision Segmentation",
+      link: null,
+      tags: ['Data Annotation', 'Object Detection', 'Semantic Segmentation'],
+      extraTagsCount: 5,
+      bgColor: "bg-blue-800",
+      overview: "This project showcases a computer vision system for automated hockey match analysis. Using semantic segmentation and object detection, key entities like players, goalies, referees, red spots, and goalposts are accurately identified and color-coded in real-time video frames. The system is capable of tracking multiple objects simultaneously and supports advanced game state interpretation for further AI-driven decision-making.",
+      process: [
+        {
+          title: "Data Annotation",
+          description: "Performed comprehensive data annotation work to label training data for semantic segmentation and object detection models."
+        },
+        {
+          title: "Computer Vision Implementation",
+          description: "Implemented semantic segmentation and object detection algorithms to identify key entities in hockey matches including players, goalies, referees, and game elements."
+        },
+        {
+          title: "Object Tracking",
+          description: "Developed multi-object tracking system capable of following multiple entities simultaneously across video frames."
+        },
+        {
+          title: "Real-time Processing",
+          description: "Optimized the system for real-time video analysis with color-coded identification and game state interpretation."
+        }
+      ],
+      success: "The Hockey Match Analysis system has successfully launched, providing coaches and analysts with automated tools for real-time game analysis and strategic decision-making.",
+      client: "Hockey Analytics Solutions",
+      location: "Global",
+      projectType: "Computer Vision, Sports Analytics, AI",
+      duration: "8 months",
+      allTechnologies: ['Data Annotation', 'Image Annotation', 'Object Detection & Tracking', 'Semantic Segmentation', 'Image Recognition', 'Computer Vision', 'AI', 'Machine Learning']
+    },
+    {
+      title: "VolleyBall Sports Analysis",
+      description: "AI-powered system to analyze volleyball match videos with automatic play segmentation and highlight detection.",
+      image: "/asset/portfolio/volleyball.mp4",
+      alt: "VolleyBall Sports Analysis - AI Video Analysis",
+      link: null,
+      tags: ['Computer Vision', 'OpenCV', 'PyTorch'],
+      extraTagsCount: 5,
+      bgColor: "bg-purple-900",
+      overview: "An AI-powered system to analyze volleyball match videos. It will segment matches into plays, detect highlights, and generate clips with structured metadata. The system also links highlights to players using jersey recognition or tracking, enabling personalized highlight reels.",
+      process: [
+        {
+          title: "Computer Vision Development",
+          description: "Implemented advanced computer vision algorithms using OpenCV and PyTorch for video analysis, player tracking, and jersey recognition."
+        },
+        {
+          title: "Play Segmentation",
+          description: "Developed automatic play segmentation algorithms to break down match videos into individual plays and actions."
+        },
+        {
+          title: "Highlight Detection",
+          description: "Built AI-powered highlight detection system that identifies key moments and generates structured metadata for each clip."
+        },
+        {
+          title: "Player Association",
+          description: "Created player association system using jersey recognition and tracking to link highlights to specific players."
+        }
+      ],
+      success: "The Volleyball Sports Analysis system has successfully launched, providing coaches and teams with powerful tools for match analysis and personalized highlight reel creation.",
+      client: "Sports Analytics Inc.",
+      location: "Global",
+      projectType: "AI, Computer Vision, Sports Analytics",
+      duration: "9 months",
+      allTechnologies: ['Computer Vision', 'OpenCV', 'PyTorch', 'Video Analysis', 'Player Tracking', 'AI', 'Machine Learning', 'Sports Analytics']
     }
   ];
 
@@ -1027,12 +1132,23 @@ export default function Home() {
                 className="group relative bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden hover:border-cyan-400/30 transition-all duration-300 hover:scale-105 cursor-pointer"
               >
                 <div className={`aspect-video relative overflow-hidden ${project.bgColor}`}>
-                  <Image 
-                    src={project.image} 
-                    alt={project.alt} 
-                    fill
-                    className="object-cover transition-all duration-300"
-                  />
+                  {project.image.endsWith('.mp4') ? (
+                    <video
+                      src={project.image}
+                      className="w-full h-full object-cover transition-all duration-300"
+                      muted
+                      loop
+                      playsInline
+                      autoPlay
+                    />
+                  ) : (
+                    <Image
+                      src={project.image}
+                      alt={project.alt}
+                      fill
+                      className="object-cover transition-all duration-300"
+                    />
+                  )}
                 </div>
                 <div className="p-6">
                   <h3 className="text-white font-semibold text-lg mb-2">{project.title}</h3>
@@ -1326,14 +1442,25 @@ export default function Home() {
                   <div className="grid lg:grid-cols-3 gap-8 p-8">
                     {/* Left Column - Main Content */}
                     <div className="lg:col-span-2 space-y-8">
-                      {/* Hero Image */}
+                      {/* Hero Image/Video */}
                       <div className="relative w-full h-64 lg:h-80 rounded-xl overflow-hidden">
-                        <Image
-                          src={project.image}
-                          alt={project.alt}
-                          fill
-                          className="object-cover"
-                        />
+                        {project.image.endsWith('.mp4') ? (
+                          <video
+                            src={project.image}
+                            className="w-full h-full object-cover"
+                            muted
+                            loop
+                            playsInline
+                            autoPlay
+                          />
+                        ) : (
+                          <Image
+                            src={project.image}
+                            alt={project.alt}
+                            fill
+                            className="object-cover"
+                          />
+                        )}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                         <div className="absolute bottom-6 left-6">
                           <h2 className="text-4xl lg:text-5xl font-bold text-white">{project.title}</h2>
@@ -1457,12 +1584,23 @@ export default function Home() {
                                 }}
                               >
                                 <div className="relative w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
-                                  <Image
-                                    src={relatedProject.image}
-                                    alt={relatedProject.alt}
-                                    fill
-                                    className="object-cover"
-                                  />
+                                  {relatedProject.image.endsWith('.mp4') ? (
+                                    <video
+                                      src={relatedProject.image}
+                                      className="w-full h-full object-cover"
+                                      muted
+                                      loop
+                                      playsInline
+                                      autoPlay
+                                    />
+                                  ) : (
+                                    <Image
+                                      src={relatedProject.image}
+                                      alt={relatedProject.alt}
+                                      fill
+                                      className="object-cover"
+                                    />
+                                  )}
                                 </div>
                                 <div className="flex-1 min-w-0">
                                   <h4 className="text-white font-semibold text-sm mb-1 line-clamp-1">
