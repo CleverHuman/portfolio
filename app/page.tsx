@@ -243,6 +243,68 @@ export default function Home() {
       allTechnologies: ['Computer Vision', 'OpenCV', 'PyTorch', 'Video Analysis', 'Player Tracking', 'AI', 'Machine Learning', 'Sports Analytics']
     },
     {
+      title: "Highlight AI",
+      description: "HiLight AI is a smart video editing app made for sports teams and athletes. It turns your phone into a powerful tool to capture, edit, and analyse game footage.",
+      image: "/asset/portfolio/Highlight AI.png",
+      alt: "Highlight AI - Video Editing App",
+      link: "https://apps.apple.com/in/app/hilight-ai/id6449363914",
+      tags: ['Video Editing', 'AI', 'Sports'],
+      extraTagsCount: 5,
+      bgColor: "bg-blue-900",
+      overview: "HiLight AI is a smart video editing app made for sports teams and athletes. It turns your phone into a powerful tool to capture, edit, and analyse game footage. With AI, it creates highlights and recruitment videos quickly and easily. No need for expensive tools - HiLight AI makes professional sports editing accessible to everyone, anywhere. ⚽🎥",
+      process: [
+        {
+          title: "AI Development",
+          description: "Developed AI algorithms for automatic video analysis, highlight detection, and intelligent editing suggestions."
+        },
+        {
+          title: "Mobile App",
+          description: "Built a user-friendly mobile application for video capture, editing, and sharing with professional-quality results."
+        },
+        {
+          title: "Sports Focus",
+          description: "Specialized the app for sports teams and athletes with features like recruitment video creation and game analysis."
+        }
+      ],
+      success: "Highlight AI has successfully launched as a revolutionary video editing app, making professional sports editing accessible to everyone.",
+      client: "Highlight AI",
+      location: "Global",
+      projectType: "Mobile App, AI Video Editing",
+      duration: "10 months",
+      allTechnologies: ['Video Editing', 'AI', 'Sports', 'Mobile App', 'Computer Vision', 'React Native', 'Machine Learning']
+    },
+    {
+      title: "Hooper Basketball",
+      description: "Hooper helps basketball players track stats, watch back highlights, and compete with friends. Whether you're playing pickup, training solo, or competing in leagues, Hooper makes every game more competitive, social, and rewarding.",
+      image: "/asset/portfolio/hooper basketball.png",
+      alt: "Hooper Basketball - Basketball Stats App",
+      link: "https://apps.apple.com/us/app/hooper-basketball/id6458646707",
+      tags: ['Basketball', 'Mobile App', 'Sports Analytics'],
+      extraTagsCount: 7,
+      bgColor: "bg-green-900",
+      overview: "Hooper helps basketball players track stats, watch back highlights, and compete with friends. Whether you're playing pickup, training solo, or competing in leagues, Hooper makes every game more competitive, social, and rewarding.\n\nFeatures:\nAI-Powered Shot Tracking – Detect makes, misses, and shot efficiency automatically.\nGroup Leaderboards – Track performance and compete with friends.\nInteractive Highlights – AI-enhanced clips showcasing your best plays.\nPlayer Stats & Attributes – See real-time analytics on your game.\nGame & Session Logging – Organize your games and track progress over time.\nSocial & Community Features – Join groups, compare stats, and challenge other players.\n\nBuilt for real players – Log your pickup games, training sessions, and matchups seamlessly.\nAI insights – Track trends in your game with advanced analytics.\nCompete & improve – Earn medals, rank up, and refine your skills.",
+      process: [
+        {
+          title: "AI Development",
+          description: "Implemented AI-powered shot tracking and highlight generation for automatic game analysis and performance insights."
+        },
+        {
+          title: "Social Features",
+          description: "Built social and community features including leaderboards, group challenges, and player comparisons."
+        },
+        {
+          title: "Mobile App",
+          description: "Developed a comprehensive mobile application for tracking stats, logging games, and sharing highlights across platforms."
+        }
+      ],
+      success: "Hooper Basketball has successfully launched as a comprehensive basketball tracking app, helping players improve their game through AI-powered analytics and social competition.",
+      client: "Hooper Basketball",
+      location: "Global",
+      projectType: "Mobile App, Sports Technology",
+      duration: "11 months",
+      allTechnologies: ['Basketball', 'Mobile App', 'Sports Analytics', 'AI', 'Shot Tracking', 'React Native', 'Real-time Stats', 'Social Features']
+    },
+    {
       title: "FreeCast",
       description: "Personalized streaming experience. Watch local TV channels for free.",
       image: "/asset/portfolio/FreeCast.png",
@@ -644,68 +706,6 @@ export default function Home() {
       projectType: "WhatsApp Business API, Communication Platform",
       duration: "14 months",
       allTechnologies: ['WhatsApp Business API', 'React', 'Message Automation', 'CRM Integration', 'Marketing Automation', 'Customer Support', 'Analytics']
-    },
-    {
-      title: "Highlight AI",
-      description: "HiLight AI is a smart video editing app made for sports teams and athletes. It turns your phone into a powerful tool to capture, edit, and analyse game footage.",
-      image: "/asset/portfolio/Highlight AI.png",
-      alt: "Highlight AI - Video Editing App",
-      link: "https://apps.apple.com/in/app/hilight-ai/id6449363914",
-      tags: ['Video Editing', 'AI', 'Sports'],
-      extraTagsCount: 5,
-      bgColor: "bg-blue-900",
-      overview: "HiLight AI is a smart video editing app made for sports teams and athletes. It turns your phone into a powerful tool to capture, edit, and analyse game footage. With AI, it creates highlights and recruitment videos quickly and easily. No need for expensive tools - HiLight AI makes professional sports editing accessible to everyone, anywhere. ⚽🎥",
-      process: [
-        {
-          title: "AI Development",
-          description: "Developed AI algorithms for automatic video analysis, highlight detection, and intelligent editing suggestions."
-        },
-        {
-          title: "Mobile App",
-          description: "Built a user-friendly mobile application for video capture, editing, and sharing with professional-quality results."
-        },
-        {
-          title: "Sports Focus",
-          description: "Specialized the app for sports teams and athletes with features like recruitment video creation and game analysis."
-        }
-      ],
-      success: "Highlight AI has successfully launched as a revolutionary video editing app, making professional sports editing accessible to everyone.",
-      client: "Highlight AI",
-      location: "Global",
-      projectType: "Mobile App, AI Video Editing",
-      duration: "10 months",
-      allTechnologies: ['Video Editing', 'AI', 'Sports', 'Mobile App', 'Computer Vision', 'React Native', 'Machine Learning']
-    },
-    {
-      title: "Hooper Basketball",
-      description: "Hooper helps basketball players track stats, watch back highlights, and compete with friends. Whether you're playing pickup, training solo, or competing in leagues, Hooper makes every game more competitive, social, and rewarding.",
-      image: "/asset/portfolio/hooper basketball.png",
-      alt: "Hooper Basketball - Basketball Stats App",
-      link: "https://apps.apple.com/us/app/hooper-basketball/id6458646707",
-      tags: ['Basketball', 'Mobile App', 'Sports Analytics'],
-      extraTagsCount: 7,
-      bgColor: "bg-green-900",
-      overview: "Hooper helps basketball players track stats, watch back highlights, and compete with friends. Whether you're playing pickup, training solo, or competing in leagues, Hooper makes every game more competitive, social, and rewarding.\n\nFeatures:\nAI-Powered Shot Tracking – Detect makes, misses, and shot efficiency automatically.\nGroup Leaderboards – Track performance and compete with friends.\nInteractive Highlights – AI-enhanced clips showcasing your best plays.\nPlayer Stats & Attributes – See real-time analytics on your game.\nGame & Session Logging – Organize your games and track progress over time.\nSocial & Community Features – Join groups, compare stats, and challenge other players.\n\nBuilt for real players – Log your pickup games, training sessions, and matchups seamlessly.\nAI insights – Track trends in your game with advanced analytics.\nCompete & improve – Earn medals, rank up, and refine your skills.",
-      process: [
-        {
-          title: "AI Development",
-          description: "Implemented AI-powered shot tracking and highlight generation for automatic game analysis and performance insights."
-        },
-        {
-          title: "Social Features",
-          description: "Built social and community features including leaderboards, group challenges, and player comparisons."
-        },
-        {
-          title: "Mobile App",
-          description: "Developed a comprehensive mobile application for tracking stats, logging games, and sharing highlights across platforms."
-        }
-      ],
-      success: "Hooper Basketball has successfully launched as a comprehensive basketball tracking app, helping players improve their game through AI-powered analytics and social competition.",
-      client: "Hooper Basketball",
-      location: "Global",
-      projectType: "Mobile App, Sports Technology",
-      duration: "11 months",
-      allTechnologies: ['Basketball', 'Mobile App', 'Sports Analytics', 'AI', 'Shot Tracking', 'React Native', 'Real-time Stats', 'Social Features']
     }
   ];
 
