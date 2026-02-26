@@ -17,47 +17,42 @@ export default function Home() {
   const [displayedName, setDisplayedName] = useState('');
   const [isTyping, setIsTyping] = useState(true);
 
-  // Typing animation for name - continuous loop
   useEffect(() => {
     const name = '@Clever-AI Specialist';
     let currentIndex = 0;
     let isDeleting = false;
     let pauseCount = 0;
-    const pauseAfterTyping = 20; // Pause for 2 seconds (20 * 100ms)
-    const pauseAfterDeleting = 5; // Pause for 0.5 seconds (5 * 100ms)
+    const pauseAfterTyping = 20; 
+    const pauseAfterDeleting = 5; 
     
     const animate = () => {
       if (!isDeleting && currentIndex < name.length) {
-        // Typing forward
         setDisplayedName(name.substring(0, currentIndex + 1));
         currentIndex++;
         setIsTyping(true);
         pauseCount = 0;
-        setTimeout(animate, 100); // Typing speed: 100ms
+        setTimeout(animate, 100); 
       } else if (!isDeleting && currentIndex === name.length) {
-        // Finished typing, pause before deleting
         pauseCount++;
         if (pauseCount >= pauseAfterTyping) {
           isDeleting = true;
           pauseCount = 0;
-          setTimeout(animate, 50); // Start deleting
+          setTimeout(animate, 50); 
         } else {
           setTimeout(animate, 100);
         }
       } else if (isDeleting && currentIndex > 0) {
-        // Deleting backward
         currentIndex--;
         setDisplayedName(name.substring(0, currentIndex));
         setIsTyping(true);
         pauseCount = 0;
-        setTimeout(animate, 50); // Deleting speed: 50ms (faster)
+        setTimeout(animate, 50); 
       } else if (isDeleting && currentIndex === 0) {
-        // Finished deleting, pause before typing again
         pauseCount++;
         if (pauseCount >= pauseAfterDeleting) {
           isDeleting = false;
           pauseCount = 0;
-          setTimeout(animate, 100); // Start typing again
+          setTimeout(animate, 100); 
         } else {
           setTimeout(animate, 100);
         }
@@ -66,7 +61,6 @@ export default function Home() {
 
     animate();
 
-    // Cleanup is handled by the recursive setTimeout pattern
     return () => {};
   }, []);
 
@@ -144,6 +138,111 @@ export default function Home() {
 
   const portfolioProjects = [
     {
+      title: "Multi-Player Pose Estimation and Movement Analytics for Tennis",
+      description: "Real-time multi-player pose estimation and tracking system for tennis match analysis using computer vision.",
+      image: "/asset/portfolio/tennis.mp4",
+      alt: "Tennis Pose Estimation - Computer Vision Analytics",
+      link: null,
+      tags: ['Computer Vision', 'Pose Estimation', 'Sports Analytics'],
+      extraTagsCount: 6,
+      bgColor: "bg-green-800",
+      overview: "This project implements a real-time multi-player pose estimation and tracking system designed for tennis match analysis. The system detects players, extracts full-body skeletal keypoints, tracks identity across frames, and performs motion analytics to evaluate biomechanics, footwork, and positioning during gameplay. The provided video demonstrates three players inside an indoor court environment with overlaid skeletal keypoints representing detected body joints in real time.",
+      process: [
+        {
+          title: "Pose Estimation",
+          description: "Developed real-time multi-player pose estimation system using computer vision to extract full-body skeletal keypoints from video feeds."
+        },
+        {
+          title: "Player Tracking",
+          description: "Implemented identity tracking across frames to maintain consistent player identification throughout the match."
+        },
+        {
+          title: "Motion Analytics",
+          description: "Built motion analytics engine to evaluate biomechanics, footwork patterns, and player positioning during gameplay."
+        },
+        {
+          title: "Real-time Processing",
+          description: "Optimized the system for real-time processing with overlaid skeletal keypoints and performance metrics display."
+        }
+      ],
+      success: "The Tennis Pose Estimation system has successfully launched, providing coaches and players with detailed biomechanical analysis and performance insights for improved training and gameplay.",
+      client: "Tennis Analytics Pro",
+      location: "Global",
+      projectType: "Computer Vision, Sports Technology, AI",
+      duration: "10 months",
+      allTechnologies: ['Computer Vision', 'Pose Estimation', 'Sports Analytics', 'Real-time Processing', 'Motion Tracking', 'Biomechanics', 'AI', 'Machine Learning']
+    },
+    {
+      title: "Hockey Match Analysis using Segmentation and Recognition",
+      description: "Computer vision system for automated hockey match analysis using semantic segmentation and object detection.",
+      image: "/asset/portfolio/hockey.png",
+      alt: "Hockey Match Analysis - Computer Vision Segmentation",
+      link: null,
+      tags: ['Data Annotation', 'Object Detection', 'Semantic Segmentation'],
+      extraTagsCount: 5,
+      bgColor: "bg-blue-800",
+      overview: "This project showcases a computer vision system for automated hockey match analysis. Using semantic segmentation and object detection, key entities like players, goalies, referees, red spots, and goalposts are accurately identified and color-coded in real-time video frames. The system is capable of tracking multiple objects simultaneously and supports advanced game state interpretation for further AI-driven decision-making.",
+      process: [
+        {
+          title: "Data Annotation",
+          description: "Performed comprehensive data annotation work to label training data for semantic segmentation and object detection models."
+        },
+        {
+          title: "Computer Vision Implementation",
+          description: "Implemented semantic segmentation and object detection algorithms to identify key entities in hockey matches including players, goalies, referees, and game elements."
+        },
+        {
+          title: "Object Tracking",
+          description: "Developed multi-object tracking system capable of following multiple entities simultaneously across video frames."
+        },
+        {
+          title: "Real-time Processing",
+          description: "Optimized the system for real-time video analysis with color-coded identification and game state interpretation."
+        }
+      ],
+      success: "The Hockey Match Analysis system has successfully launched, providing coaches and analysts with automated tools for real-time game analysis and strategic decision-making.",
+      client: "Hockey Analytics Solutions",
+      location: "Global",
+      projectType: "Computer Vision, Sports Analytics, AI",
+      duration: "8 months",
+      allTechnologies: ['Data Annotation', 'Image Annotation', 'Object Detection & Tracking', 'Semantic Segmentation', 'Image Recognition', 'Computer Vision', 'AI', 'Machine Learning']
+    },
+    {
+      title: "VolleyBall Sports Analysis",
+      description: "AI-powered system to analyze volleyball match videos with automatic play segmentation and highlight detection.",
+      image: "/asset/portfolio/volleyball.mp4",
+      alt: "VolleyBall Sports Analysis - AI Video Analysis",
+      link: null,
+      tags: ['Computer Vision', 'OpenCV', 'PyTorch'],
+      extraTagsCount: 5,
+      bgColor: "bg-purple-900",
+      overview: "An AI-powered system to analyze volleyball match videos. It will segment matches into plays, detect highlights, and generate clips with structured metadata. The system also links highlights to players using jersey recognition or tracking, enabling personalized highlight reels.",
+      process: [
+        {
+          title: "Computer Vision Development",
+          description: "Implemented advanced computer vision algorithms using OpenCV and PyTorch for video analysis, player tracking, and jersey recognition."
+        },
+        {
+          title: "Play Segmentation",
+          description: "Developed automatic play segmentation algorithms to break down match videos into individual plays and actions."
+        },
+        {
+          title: "Highlight Detection",
+          description: "Built AI-powered highlight detection system that identifies key moments and generates structured metadata for each clip."
+        },
+        {
+          title: "Player Association",
+          description: "Created player association system using jersey recognition and tracking to link highlights to specific players."
+        }
+      ],
+      success: "The Volleyball Sports Analysis system has successfully launched, providing coaches and teams with powerful tools for match analysis and personalized highlight reel creation.",
+      client: "Sports Analytics Inc.",
+      location: "Global",
+      projectType: "AI, Computer Vision, Sports Analytics",
+      duration: "9 months",
+      allTechnologies: ['Computer Vision', 'OpenCV', 'PyTorch', 'Video Analysis', 'Player Tracking', 'AI', 'Machine Learning', 'Sports Analytics']
+    },
+    {
       title: "FreeCast",
       description: "Personalized streaming experience. Watch local TV channels for free.",
       image: "/asset/portfolio/FreeCast.png",
@@ -204,37 +303,6 @@ export default function Home() {
       projectType: "Blockchain, DeFi Development",
       duration: "10 months",
       allTechnologies: ['DeFi', 'Blockchain', 'Cross-chain', 'Smart Contracts', 'Web3', 'Solidity', 'Ethereum']
-    },
-    {
-      title: "Vengo AI - Digital Companion Platform",
-      description: "AI-powered digital companion with natural language processing",
-      image: "/asset/portfolio/Vengo AI.png",
-      alt: "Vengo AI - Digital Companion Platform",
-      link: "https://vengoai.com/",
-      tags: ['AI', 'Natural Language Processing'],
-      extraTagsCount: 5,
-      bgColor: "bg-slate-900",
-      overview: "Vengo AI is a cutting-edge digital companion platform combating loneliness and supporting mental well-being. It offers empathetic, judgment-free AI personas that users can create and monetize. The platform features sophisticated natural language processing, real-time conversation capabilities, and an innovative creator economy system.",
-      process: [
-        {
-          title: "AI Development",
-          description: "Implemented advanced natural language processing systems using transformer models for human-like conversations. Developed sophisticated personality modeling algorithms to create unique and engaging AI personas."
-        },
-        {
-          title: "Platform Architecture",
-          description: "Built a scalable platform architecture supporting real-time conversations, user authentication, and secure data handling. Implemented creator tools for AI persona development and monetization features."
-        },
-        {
-          title: "User Experience",
-          description: "Created an intuitive interface for both AI persona creators and users, with emphasis on accessibility and engagement. Implemented analytics and feedback systems to continuously improve conversation quality."
-        }
-      ],
-      success: "Vengo AI has successfully launched as a pioneering platform in the digital companion space, enabling creators to monetize their AI personas while providing meaningful support to users seeking connection. The platform has shown significant impact in mental well-being support, with high user engagement rates and positive feedback from both creators and users.",
-      client: "Spinnr AI",
-      location: "United States",
-      projectType: "AI, Full Stack Development",
-      duration: "12 months",
-      allTechnologies: ['Natural Language Processing', 'Full Stack', 'Creator Economy', 'Machine Learning', 'Real-time Communication', 'Digital Companions']
     },
     {
       title: "Kronix - SaaS Web Application",
@@ -359,6 +427,37 @@ export default function Home() {
       projectType: "AI, Video Analysis",
       duration: "7 months",
       allTechnologies: ['Object Tracking', 'Video Analysis', 'Computer Vision', 'Machine Learning', 'Google AI', 'Image Processing', 'Product Recognition']
+    },
+    {
+      title: "Vengo AI - Digital Companion Platform",
+      description: "AI-powered digital companion with natural language processing",
+      image: "/asset/portfolio/Vengo AI.png",
+      alt: "Vengo AI - Digital Companion Platform",
+      link: "https://vengoai.com/",
+      tags: ['AI', 'Natural Language Processing'],
+      extraTagsCount: 5,
+      bgColor: "bg-slate-900",
+      overview: "Vengo AI is a cutting-edge digital companion platform combating loneliness and supporting mental well-being. It offers empathetic, judgment-free AI personas that users can create and monetize. The platform features sophisticated natural language processing, real-time conversation capabilities, and an innovative creator economy system.",
+      process: [
+        {
+          title: "AI Development",
+          description: "Implemented advanced natural language processing systems using transformer models for human-like conversations. Developed sophisticated personality modeling algorithms to create unique and engaging AI personas."
+        },
+        {
+          title: "Platform Architecture",
+          description: "Built a scalable platform architecture supporting real-time conversations, user authentication, and secure data handling. Implemented creator tools for AI persona development and monetization features."
+        },
+        {
+          title: "User Experience",
+          description: "Created an intuitive interface for both AI persona creators and users, with emphasis on accessibility and engagement. Implemented analytics and feedback systems to continuously improve conversation quality."
+        }
+      ],
+      success: "Vengo AI has successfully launched as a pioneering platform in the digital companion space, enabling creators to monetize their AI personas while providing meaningful support to users seeking connection. The platform has shown significant impact in mental well-being support, with high user engagement rates and positive feedback from both creators and users.",
+      client: "Spinnr AI",
+      location: "United States",
+      projectType: "AI, Full Stack Development",
+      duration: "12 months",
+      allTechnologies: ['Natural Language Processing', 'Full Stack', 'Creator Economy', 'Machine Learning', 'Real-time Communication', 'Digital Companions']
     },
     {
       title: "Monday.com Integration - CRM Automation",
@@ -607,111 +706,6 @@ export default function Home() {
       projectType: "Mobile App, Sports Technology",
       duration: "11 months",
       allTechnologies: ['Basketball', 'Mobile App', 'Sports Analytics', 'AI', 'Shot Tracking', 'React Native', 'Real-time Stats', 'Social Features']
-    },
-    {
-      title: "Multi-Player Pose Estimation and Movement Analytics for Tennis",
-      description: "Real-time multi-player pose estimation and tracking system for tennis match analysis using computer vision.",
-      image: "/asset/portfolio/tennis.mp4",
-      alt: "Tennis Pose Estimation - Computer Vision Analytics",
-      link: null,
-      tags: ['Computer Vision', 'Pose Estimation', 'Sports Analytics'],
-      extraTagsCount: 6,
-      bgColor: "bg-green-800",
-      overview: "This project implements a real-time multi-player pose estimation and tracking system designed for tennis match analysis. The system detects players, extracts full-body skeletal keypoints, tracks identity across frames, and performs motion analytics to evaluate biomechanics, footwork, and positioning during gameplay. The provided video demonstrates three players inside an indoor court environment with overlaid skeletal keypoints representing detected body joints in real time.",
-      process: [
-        {
-          title: "Pose Estimation",
-          description: "Developed real-time multi-player pose estimation system using computer vision to extract full-body skeletal keypoints from video feeds."
-        },
-        {
-          title: "Player Tracking",
-          description: "Implemented identity tracking across frames to maintain consistent player identification throughout the match."
-        },
-        {
-          title: "Motion Analytics",
-          description: "Built motion analytics engine to evaluate biomechanics, footwork patterns, and player positioning during gameplay."
-        },
-        {
-          title: "Real-time Processing",
-          description: "Optimized the system for real-time processing with overlaid skeletal keypoints and performance metrics display."
-        }
-      ],
-      success: "The Tennis Pose Estimation system has successfully launched, providing coaches and players with detailed biomechanical analysis and performance insights for improved training and gameplay.",
-      client: "Tennis Analytics Pro",
-      location: "Global",
-      projectType: "Computer Vision, Sports Technology, AI",
-      duration: "10 months",
-      allTechnologies: ['Computer Vision', 'Pose Estimation', 'Sports Analytics', 'Real-time Processing', 'Motion Tracking', 'Biomechanics', 'AI', 'Machine Learning']
-    },
-    {
-      title: "Hockey Match Analysis using Segmentation and Recognition",
-      description: "Computer vision system for automated hockey match analysis using semantic segmentation and object detection.",
-      image: "/asset/portfolio/hockey.png",
-      alt: "Hockey Match Analysis - Computer Vision Segmentation",
-      link: null,
-      tags: ['Data Annotation', 'Object Detection', 'Semantic Segmentation'],
-      extraTagsCount: 5,
-      bgColor: "bg-blue-800",
-      overview: "This project showcases a computer vision system for automated hockey match analysis. Using semantic segmentation and object detection, key entities like players, goalies, referees, red spots, and goalposts are accurately identified and color-coded in real-time video frames. The system is capable of tracking multiple objects simultaneously and supports advanced game state interpretation for further AI-driven decision-making.",
-      process: [
-        {
-          title: "Data Annotation",
-          description: "Performed comprehensive data annotation work to label training data for semantic segmentation and object detection models."
-        },
-        {
-          title: "Computer Vision Implementation",
-          description: "Implemented semantic segmentation and object detection algorithms to identify key entities in hockey matches including players, goalies, referees, and game elements."
-        },
-        {
-          title: "Object Tracking",
-          description: "Developed multi-object tracking system capable of following multiple entities simultaneously across video frames."
-        },
-        {
-          title: "Real-time Processing",
-          description: "Optimized the system for real-time video analysis with color-coded identification and game state interpretation."
-        }
-      ],
-      success: "The Hockey Match Analysis system has successfully launched, providing coaches and analysts with automated tools for real-time game analysis and strategic decision-making.",
-      client: "Hockey Analytics Solutions",
-      location: "Global",
-      projectType: "Computer Vision, Sports Analytics, AI",
-      duration: "8 months",
-      allTechnologies: ['Data Annotation', 'Image Annotation', 'Object Detection & Tracking', 'Semantic Segmentation', 'Image Recognition', 'Computer Vision', 'AI', 'Machine Learning']
-    },
-    {
-      title: "VolleyBall Sports Analysis",
-      description: "AI-powered system to analyze volleyball match videos with automatic play segmentation and highlight detection.",
-      image: "/asset/portfolio/volleyball.mp4",
-      alt: "VolleyBall Sports Analysis - AI Video Analysis",
-      link: null,
-      tags: ['Computer Vision', 'OpenCV', 'PyTorch'],
-      extraTagsCount: 5,
-      bgColor: "bg-purple-900",
-      overview: "An AI-powered system to analyze volleyball match videos. It will segment matches into plays, detect highlights, and generate clips with structured metadata. The system also links highlights to players using jersey recognition or tracking, enabling personalized highlight reels.",
-      process: [
-        {
-          title: "Computer Vision Development",
-          description: "Implemented advanced computer vision algorithms using OpenCV and PyTorch for video analysis, player tracking, and jersey recognition."
-        },
-        {
-          title: "Play Segmentation",
-          description: "Developed automatic play segmentation algorithms to break down match videos into individual plays and actions."
-        },
-        {
-          title: "Highlight Detection",
-          description: "Built AI-powered highlight detection system that identifies key moments and generates structured metadata for each clip."
-        },
-        {
-          title: "Player Association",
-          description: "Created player association system using jersey recognition and tracking to link highlights to specific players."
-        }
-      ],
-      success: "The Volleyball Sports Analysis system has successfully launched, providing coaches and teams with powerful tools for match analysis and personalized highlight reel creation.",
-      client: "Sports Analytics Inc.",
-      location: "Global",
-      projectType: "AI, Computer Vision, Sports Analytics",
-      duration: "9 months",
-      allTechnologies: ['Computer Vision', 'OpenCV', 'PyTorch', 'Video Analysis', 'Player Tracking', 'AI', 'Machine Learning', 'Sports Analytics']
     }
   ];
 
@@ -758,11 +752,10 @@ export default function Home() {
     setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
   };
 
-  // Auto-sliding functionality
   useEffect(() => {
     autoSlideIntervalRef.current = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % totalSlides);
-    }, 5000); // Change slide every 5 seconds
+    }, 5000); 
 
     return () => {
       if (autoSlideIntervalRef.current) {
@@ -771,11 +764,10 @@ export default function Home() {
     };
   }, [totalSlides]);
 
-  // Auto-sliding functionality for service banner
   useEffect(() => {
     serviceSlideIntervalRef.current = setInterval(() => {
       setCurrentServiceSlide((prev) => (prev + 1) % totalServiceSlides);
-    }, 6000); // Change slide every 6 seconds
+    }, 6000); 
 
     return () => {
       if (serviceSlideIntervalRef.current) {
@@ -795,16 +787,15 @@ export default function Home() {
   const openProjectModal = (index: number) => {
     setSelectedProject(index);
     setIsModalOpen(true);
-    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    document.body.style.overflow = 'hidden'; 
   };
 
   const closeProjectModal = () => {
     setIsModalOpen(false);
     setSelectedProject(null);
-    document.body.style.overflow = 'unset'; // Restore scrolling
+    document.body.style.overflow = 'unset'; 
   };
 
-  // Close modal on Escape key
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape' && isModalOpen) {
@@ -818,7 +809,7 @@ export default function Home() {
   return (
   <div className="min-h-screen bg-gradient-to-br from-[#0a0b1a] via-[#141529] to-[#1a1b3a] relative overflow-x-hidden">
       {/* Vortex Background - Full Site */}
-    <Vortex className="w-full h-full" particleCount={150} baseHue={120} />
+    {/* <Vortex className="w-full h-full" particleCount={150} baseHue={120} /> */}
       
     <div className="relative z-10">
       <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-black/30 border-b border-white/5">
